@@ -28,6 +28,8 @@ Then append the following html elements on your page:
 </html>
 ```
 
+Depending on requirements you also need to include `better-ajaxify-pushstate` or `better-ajaxify-hashchange`. The first file implements havigation via [HTML5 History API](https://developer.mozilla.org/en/docs/DOM/Manipulating_the_browser_history) and this is preferred option for web site. The second uses hash to indicate current state, so it could be useful for web applications.
+
 Frontend setup
 --------------
 Custom `data-ajaxify` attribute is used to mark html elements that may be reloaded dynamically. The value of this attribute is a key of the `html` object in json response from server.
@@ -53,7 +55,8 @@ The library exposes custom events below for advanced interaction:
 * `ajaxify:fetch` is triggered every time a new content is loaded. `target` of this event is the element that fired loading a new page. The event could be used programmatically, for example `DOM.fire("ajaxify:fetch", url_to_load)`
 * `ajaxify:loadstart` is triggered before doing an ajax call. `detail` if this event is particular instance of XMLHttpRequest object. It can be used for advanced configuration, like adding request headers via calling `xhr.setRequestHeader` method etc.
 * `ajaxify:loadend` is triggered after an every ajax call. `detail` if this event is particular instance of XMLHttpRequest object
-* `ajaxify:success` is triggered only if server returned succesfull response code. In this case library tries to parse `responseText` via `JSON.parse` if possible so `detail` of this event may be a javascript object of raw response string
+* `ajaxify:load` is triggered only if server returned succesfull response code. In this case library tries to parse `responseText` via `JSON.parse` if possible so `detail` of this event may be a javascript object of raw response string
+* `ajaxify:history` is triggered when a user navigates through history in browser. `detail` of this event is target history entry url.
 * `ajaxify:error` is triggered only if server returned unsuccesfull response code. `detail` if this event is particular instance of XMLHttpRequest object
 * `ajaxify:abort` is triggered when response was cancelled because of timeout. Timeout is not configurable for now and it equals to 15 seconds
 
@@ -64,5 +67,3 @@ Browser support
 * Firefox 16+
 * Opera 12.10+
 * IE8+
-
-For the fastest UX the plugin uses [HTML5 History API](https://developer.mozilla.org/en/docs/DOM/Manipulating_the_browser_history), so browsers that don't support it get only part of virtues.
