@@ -1,7 +1,11 @@
 .DS_Store
 *.sublime-workspace
 node_modules
+<<<<<<< HEAD
 build
+=======
+bower_components
+>>>>>>> master
 coverage
 *.log
 .grunt

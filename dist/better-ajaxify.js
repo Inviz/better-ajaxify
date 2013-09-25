@@ -1,6 +1,10 @@
 /**
  * @file better-ajaxify.js
+<<<<<<< HEAD
  * @version 1.2.3 2013-09-25T15:18:41
+=======
+ * @version 1.2.3 2013-09-25T15:23:18
+>>>>>>> master
  * @overview SEO-friendly ajax website engine for better-dom
  * @copyright Maksim Chemerisuk 2013
  * @license MIT
